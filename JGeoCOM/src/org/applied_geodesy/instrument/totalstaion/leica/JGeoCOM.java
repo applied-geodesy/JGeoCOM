@@ -1199,7 +1199,7 @@ public class JGeoCOM implements RxTxReturnable, ReceiverExchangeable {
 	
 	/****************************************************/
 	/*                                                  */
-	/*                  Camera – CAM                    */
+	/*                  Camera - CAM                    */
 	/*                                                  */
 	/****************************************************/
 
@@ -1238,7 +1238,7 @@ public class JGeoCOM implements RxTxReturnable, ReceiverExchangeable {
 	 * This command reads the position of the OVC with respect to station coordinates 
 	 * (in Cartesian coordinate system). The station coordinates can be read with 
 	 * function TMC_GetStation.
-	 * If the instrument is turned to Hz angle 0° and V angle 90° the function CAM_GetCamPos would return the
+	 * If the instrument is turned to Hz angle 0 deg and V angle 90 deg the function CAM_GetCamPos would return the
 	 * typical camera shift values x = Easting = 0.016 m, y = Northing = 0.061 m and z = Height = 0.056 m.
 	 * 
 	 * @param CamID Camera ID
@@ -1628,7 +1628,7 @@ public class JGeoCOM implements RxTxReturnable, ReceiverExchangeable {
 	
 	/****************************************************/
 	/*                                                  */
-	/*              Image Processing – IMG              */
+	/*              Image Processing - IMG              */
 	/*                                                  */
 	/****************************************************/
 	
@@ -2586,7 +2586,7 @@ public class JGeoCOM implements RxTxReturnable, ReceiverExchangeable {
 	 *                        target in the destination area. This mode is
 	 *                        only possible if ATR exists and is
 	 *                        activated.
-	 * @param bDummy          It’s reserved for future use, set bDummy always to <strong>0 = FALSE</strong>
+	 * @param bDummy          It is reserved for future use, set bDummy always to <strong>0 = FALSE</strong>
 	 * @see AUT_POS_MODE
 	 * @see AUT_ATR_MODE
 	 * @return %R1P,0,0:RC
@@ -2660,7 +2660,7 @@ public class JGeoCOM implements RxTxReturnable, ReceiverExchangeable {
 	/**
 	 * performs an automatically target search within a given area. The search area has a rectangular
 	 * shape where the input parameters determine the axis in horizontal and vertical direction. If the search was
-	 * successful, the telescope will position to the target in the exactness of the field of vision (1,66gon / 1°30'),
+	 * successful, the telescope will position to the target in the exactness of the field of vision (1,66gon / 1'30'),
 	 * otherwise the instrument turns back to the initial start position. With the ESC key a running search process will
 	 * be aborted. The <strong>ATR mode must be enabled for this functionality</strong>, see <code>AUS_SetUserAtrState()</code> and
 	 * <code>AUS_GetUserAtrState</code>. For a exact positioning use fine adjust (see <code>AUT_FineAdjust</code>) afterwards.
@@ -3848,7 +3848,7 @@ public class JGeoCOM implements RxTxReturnable, ReceiverExchangeable {
 	}
 	
 	
-	/************************************* KEYBOARD DISPLAY UNIT – KDM *********************************\
+	/************************************* KEYBOARD DISPLAY UNIT - KDM *********************************\
 	
 	/**
 	 * Set the display power on or off. The display will be switched off after one minute 
