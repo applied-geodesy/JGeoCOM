@@ -294,7 +294,14 @@ public class JGeoCOM implements RxTxReturnable, ReceiverExchangeable {
 						);
 					}
 					break;
-
+					
+				case TMC_CalcATMCorr:
+					if (reqParamArr.length >= 1) {
+						packet.setOnAnswerArgument(
+								Double.valueOf(reqParamArr[0])
+						);
+					}
+					break;
 					
 				case TMC_GetPrismCorr:
 					if (reqParamArr.length >= 1) {
@@ -1943,7 +1950,6 @@ public class JGeoCOM implements RxTxReturnable, ReceiverExchangeable {
 	 * @deprecated Replace with TMC_SetAtmCorr should only be used for older instruments such as the TCA2003
 	 *
 	 */
-	@Deprecated 
 	public GCDataPacket TMC_CalcATMCorr(TMC_ATMOS_TEMPERATURE atmTemperature) {
 		return this.TMC_CalcATMCorr(atmTemperature.dLambda, atmTemperature.dPressure, atmTemperature.dDryTemperature, atmTemperature.dWetTemperature);
 	}
@@ -1959,7 +1965,6 @@ public class JGeoCOM implements RxTxReturnable, ReceiverExchangeable {
 	 * @deprecated Replace with TMC_SetAtmCorr should only be used for older instruments such as the TCA2003
 	 *
 	 */
-	@Deprecated 
 	public GCDataPacket TMC_CalcATMCorr(double lambda, double pressure, double dryTemperature, double wetTemperature) {
 		GCDataPacket packet = new GCDataPacket(
 				RPC.TMC_CalcATMCorr,
@@ -2195,7 +2200,6 @@ public class JGeoCOM implements RxTxReturnable, ReceiverExchangeable {
 	 * @return %R1P,0,0:RC
 	 * @deprecated Replace with TMC_SetAtmPpm should only be used for older instruments such as the TCA2003
 	 */
-	@Deprecated 
 	public GCDataPacket TMC_SetDistPPm(double dPpmD) {
 		GCDataPacket packet = new GCDataPacket(
 				RPC.TMC_SetDistPPm,
