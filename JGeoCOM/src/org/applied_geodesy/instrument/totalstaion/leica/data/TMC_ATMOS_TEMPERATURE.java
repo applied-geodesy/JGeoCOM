@@ -24,8 +24,8 @@ package org.applied_geodesy.instrument.totalstaion.leica.data;
 public class TMC_ATMOS_TEMPERATURE {
 	public double dLambda; // Wave length of the EDM transmitter [m]
 	public double dPressure; // Atmospheric pressure [mbar]
-	public double dDryTemperature; // Dry temperature [°C]
-	public double dWetTemperature; // Wet temperature [°C]
+	public double dDryTemperature; // Dry temperature [Â°C]
+	public double dWetTemperature; // Wet temperature [Â°C]
 	public TMC_ATMOS_TEMPERATURE(double dLambda, double dPressure,
 			double dDryTemperature, double dWetTemperature) {
 		this.dLambda = dLambda;

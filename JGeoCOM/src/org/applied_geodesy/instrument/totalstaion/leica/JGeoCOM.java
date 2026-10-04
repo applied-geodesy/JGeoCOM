@@ -1922,15 +1922,48 @@ public class JGeoCOM implements RxTxReturnable, ReceiverExchangeable {
 		this.doCommand(packet);
 		return packet;
 	}
-
+	
 	/**
 	 * getting the atmospheric correction parameters
-	 * @return %R1P,0,0:RC,Lambda[double],Pressure[double], DryTemperature[double],WetTemperature[double]
+	 * @return %R1P,0,0:RC,Lambda[double],Pressure[double],DryTemperature[double],WetTemperature[double]
 	 *
 	 */
 	public GCDataPacket TMC_GetAtmCorr() {
 		GCDataPacket packet = new GCDataPacket(
 				RPC.TMC_GetAtmCorr
+		);
+		this.doCommand(packet);
+		return packet;
+	}
+	
+	/**
+	 * determining the atmospheric correction parameters
+	 * @param TMC_ATMOS_TEMPERATURE
+	 * @return %R1P,0,0:RC,PPM[double]
+	 * @deprecated Replace with TMC_SetAtmCorr should only be used for older instruments such as the TCA2003
+	 *
+	 */
+	@Deprecated 
+	public GCDataPacket TMC_CalcATMCorr(TMC_ATMOS_TEMPERATURE atmTemperature) {
+		return this.TMC_CalcATMCorr(atmTemperature.dLambda, atmTemperature.dPressure, atmTemperature.dDryTemperature, atmTemperature.dWetTemperature);
+	}
+	
+	/**
+	 * determining the atmospheric correction parameters
+	 * %R1Q,2027:Wellenlänge, Luftdruck, Trockentemp, Feuchttemp 
+	 * @param lambda
+	 * @param pressure
+	 * @param dryTemperature
+	 * @param wetTemperature
+	 * @return %R1P,0,0:RC,PPM[double]
+	 * @deprecated Replace with TMC_SetAtmCorr should only be used for older instruments such as the TCA2003
+	 *
+	 */
+	@Deprecated 
+	public GCDataPacket TMC_CalcATMCorr(double lambda, double pressure, double dryTemperature, double wetTemperature) {
+		GCDataPacket packet = new GCDataPacket(
+				RPC.TMC_CalcATMCorr,
+				lambda+","+pressure+","+dryTemperature+","+wetTemperature
 		);
 		this.doCommand(packet);
 		return packet;
@@ -2040,7 +2073,7 @@ public class JGeoCOM implements RxTxReturnable, ReceiverExchangeable {
 	 * @param EarthRadius
 	 * @param RefractiveScale
 	 * @return %R1P,0,0:RC
-	 *TMC_REFRACTION
+	 *
 	 */
 	public GCDataPacket TMC_SetRefractiveCorr(ON_OFF_TYPE RefOn, double EarthRadius, double RefractiveScale) {
 		GCDataPacket packet = new GCDataPacket(
@@ -2151,6 +2184,22 @@ public class JGeoCOM implements RxTxReturnable, ReceiverExchangeable {
 		GCDataPacket packet = new GCDataPacket(
 				RPC.TMC_SetAtmPpm,
 				String.valueOf(dPpmA)
+		);
+		this.doCommand(packet);
+		return packet;
+	}
+	
+	/**
+	 * setting the distance ppm correction factor
+	 * @param  dPpmD [ppm]
+	 * @return %R1P,0,0:RC
+	 * @deprecated Replace with TMC_SetAtmPpm should only be used for older instruments such as the TCA2003
+	 */
+	@Deprecated 
+	public GCDataPacket TMC_SetDistPPm(double dPpmD) {
+		GCDataPacket packet = new GCDataPacket(
+				RPC.TMC_SetDistPPm,
+				String.valueOf(dPpmD)
 		);
 		this.doCommand(packet);
 		return packet;
