@@ -171,6 +171,7 @@ public enum RPC {
 	TMC_GetAngle1 (2003),
 	TMC_GetAngle5 (2107),
 	TMC_GetAngSwitch (2014),
+	TMC_CalcATMCorr (2027),
 	TMC_GetAtmCorr (2029),
 	TMC_GetCoordinate (2082),
 	TMC_GetEdmMode (2021),
@@ -192,6 +193,7 @@ public enum RPC {
 	TMC_IfDataIncCorrError (2115),
 	TMC_QuickDist (2117),
 	TMC_SetAngSwitch (2016),
+	TMC_SetDistPPm (2018),
 	TMC_SetAtmCorr (2028),
 	TMC_SetEdmMode (2020),
 	TMC_SetHandDist (2019),
@@ -202,7 +204,7 @@ public enum RPC {
 	TMC_SetRefractiveCorr (2030),
 	TMC_SetRefractiveMethod (2090),
 	TMC_SetAtmPpm (2148),
-	TMC_SetGeoPpm(2153),
+	TMC_SetGeoPpm (2153),
 	TMC_SetStation (2010);
 	
 	private final int value;
